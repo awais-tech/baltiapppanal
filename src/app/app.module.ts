@@ -14,6 +14,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
 import { BrowserModule } from '@angular/platform-browser';
+import { RegisterComponent } from './pages/register/register.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { BrowserModule } from '@angular/platform-browser';
   declarations: [
     AppComponent,
     AdminLayoutComponent,
-    AuthLayoutComponent
+    AuthLayoutComponent,
+  
   ],
   providers: [],
   bootstrap: [AppComponent]
