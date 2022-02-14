@@ -15,6 +15,9 @@ import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { RegisterComponent } from './pages/register/register.component';
+import { AngularToastifyModule, ToastService } from 'angular-toastify';
+import { ApicallingService } from './apicalling.service';
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -27,7 +30,10 @@ import { RegisterComponent } from './pages/register/register.component';
     NgbModule,
     RouterModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AngularToastifyModule,
+    ToastrModule.forRoot(), 
+  
   ],
   declarations: [
     AppComponent,
@@ -35,7 +41,7 @@ import { RegisterComponent } from './pages/register/register.component';
     AuthLayoutComponent,
   
   ],
-  providers: [],
+  providers: [ApicallingService,ToastService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
