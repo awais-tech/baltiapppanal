@@ -1,23 +1,20 @@
 import { Component,ViewChild,AfterViewInit } from '@angular/core';
-import { MatTableDataSource } from '@angular/material/table';
+import {  MatColumnDef,
+  MatHeaderRowDef,
+  MatNoDataRow,
+  MatRowDef,
+  MatTable,
+  MatTableDataSource, } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 
-export interface OrderElement{
+ interface OrderElement{
   RestaurentName: string
   orders: number
   status: string
   completions: number
 }
 
-const ELEMENT_DATA: OrderElement[]=[{
-  RestaurentName: "Burger King", orders: 3, status: "Working", completions:5
-},
-{
-  RestaurentName: "Burger King", orders: 3, status: "Working", completions:5
-},
-{
-  RestaurentName: "Burger King", orders: 3, status: "Working", completions:5
-}]
+
 @Component({
   selector: 'app-tables',
   templateUrl: './tables.component.html',
@@ -28,7 +25,28 @@ const ELEMENT_DATA: OrderElement[]=[{
 export class TablesComponent implements AfterViewInit{
 
 displayedColumns: string[]= ['RestaurentName', 'orders', 'status', 'completions']
-dataSource = new MatTableDataSource(ELEMENT_DATA) ;
+ ELEMENT_DATA: OrderElement[]=[{
+  RestaurentName: "Burger King", orders: 3, status: "Working", completions:5
+},
+{
+  RestaurentName: "Burger King", orders: 3, status: "Working", completions:5
+},
+{
+  RestaurentName: "Burger King", orders: 3, status: "Working", completions:5
+},
+{
+  RestaurentName: "Burger King", orders: 3, status: "Working", completions:5
+},
+{
+  RestaurentName: "Burger King", orders: 3, status: "Working", completions:5
+},
+{
+  RestaurentName: "Burger King", orders: 3, status: "Working", completions:5
+},
+{
+  RestaurentName: "Burger King", orders: 3, status: "Working", completions:5
+}]
+dataSource = new MatTableDataSource(this.ELEMENT_DATA) ;
 
 @ViewChild(MatPaginator) paginator!:MatPaginator;
 
