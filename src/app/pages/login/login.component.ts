@@ -13,6 +13,9 @@ export class LoginComponent{
     loginemail: new FormControl("", [Validators.required, Validators.email]),
     loginpassword: new FormControl("", [Validators.required, Validators.minLength(8)]),
   })
+  showloginCredentials(){
+    console.warn(this.loginForm.value)
+  }
   get loginemail(){
    return this.loginForm.get('loginemail')
  }

@@ -18,6 +18,8 @@ import { RegisterComponent } from './pages/register/register.component';
 import { AngularToastifyModule, ToastService } from 'angular-toastify';
 import { ApicallingService } from './apicalling.service';
 import { ToastrModule } from 'ngx-toastr';
+import {MatTableModule} from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 
 @NgModule({
@@ -32,6 +34,8 @@ import { ToastrModule } from 'ngx-toastr';
     AppRoutingModule,
     ReactiveFormsModule,
     AngularToastifyModule,
+    MatTableModule,
+    MatPaginatorModule,
     ToastrModule.forRoot(), 
   
   ],
