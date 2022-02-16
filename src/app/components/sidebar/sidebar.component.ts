@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ApicallingService } from 'src/app/apicalling.service';
+import { LoginsroleGuard } from 'src/app/loginsrole.guard';
 
 declare interface RouteInfo {
     path: string;
@@ -27,12 +29,18 @@ export class SidebarComponent implements OnInit {
   public menuItems: any[];
   public isCollapsed = true;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router,public api:ApicallingService) { }
 
   ngOnInit() {
     this.menuItems = ROUTES.filter(menuItem => menuItem);
     this.router.events.subscribe((event) => {
       this.isCollapsed = true;
    });
+ 
+  }
+  logout(){
+    console.log(3);
+     this.api.logout();
+     console.log(3);
   }
 }

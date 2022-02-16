@@ -19,7 +19,10 @@ import { AngularToastifyModule, ToastService } from 'angular-toastify';
 import { ApicallingService } from './apicalling.service';
 import { ToastrModule } from 'ngx-toastr';
 import {MatTableModule} from '@angular/material/table';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
+import { LoginsroleGuard } from './loginsrole.guard';
 
 
 @NgModule({
@@ -37,6 +40,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatTableModule,
     MatPaginatorModule,
     ToastrModule.forRoot(), 
+    MatSnackBarModule ,
   
   ],
   declarations: [
@@ -45,7 +49,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     AuthLayoutComponent,
   
   ],
-  providers: [ApicallingService,ToastService],
+  providers: [ApicallingService,ToastService,LoginsroleGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

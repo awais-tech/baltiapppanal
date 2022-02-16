@@ -87,10 +87,10 @@
             <span>Support</span>
           </a>
           <div class="dropdown-divider"></div>
-          <a href="#!" class="dropdown-item">
+          <button (click)="logout()" class="dropdown-item">
             <i class="ni ni-user-run"></i>
             <span>Logout</span>
-          </a>
+          </button>
         </div>
       </li>
     </ul>
@@ -143,6 +143,7 @@
           class="{{ menuItem.class }} nav-item"
         >
           <a
+            *ngIf="menuItem.title != 'Log Out'; else temp"
             routerLinkActive="active"
             [routerLink]="[menuItem.path]"
             class="nav-link"
@@ -150,7 +151,14 @@
             <i class="ni {{ menuItem.icon }}"></i>
             {{ menuItem.title }}
           </a>
+
           <br />
+          <ng-template #temp>
+            <a class="nav-link" (click)="logout()" style="cursor: pointer">
+              <i class="ni {{ menuItem.icon }}"></i>
+              {{ menuItem.title }}
+            </a>
+          </ng-template>
         </li>
       </ul>
       <!-- Divider -->
