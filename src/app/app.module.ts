@@ -7,7 +7,7 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
-
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -46,6 +46,7 @@ import {MatSelectModule} from '@angular/material/select';
     MatPaginatorModule,
     ToastrModule.forRoot(), 
     MatSnackBarModule ,
+    MatProgressSpinnerModule,
   
   ],
   declarations: [

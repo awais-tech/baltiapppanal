@@ -1,10 +1,11 @@
-import { Component, ViewChild, AfterViewInit,OnInit} from '@angular/core';
+import { Component, ViewChild, AfterViewInit, OnInit} from '@angular/core';
 import {  MatColumnDef,
   MatHeaderRowDef,
   MatNoDataRow,
   MatRowDef,
   MatTable,
   MatTableDataSource, } from '@angular/material/table';
+
 import { MatPaginator } from '@angular/material/paginator';
 import { ApicallingService } from '../../apicalling.service';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
@@ -23,9 +24,38 @@ import { element } from 'protractor';
   templateUrl: './tables.component.html',
   styleUrls: ['./tables.component.scss']
 })
-export class TablesComponent implements AfterViewInit,OnInit {
-  statusValue=[
-    {value: 'completed', viewValue: 'Completed'},
+export class TablesComponent implements AfterViewInit, OnInit {
+  loading=true;
+  constructor(private api: ApicallingService, private _snackBar: MatSnackBar) {
+    this.loading=true;
+    this.api.getorders().subscribe
+    ((res) => {
+      res.forEach((element) => {
+
+
+      const order = element.UserId.map((val) => {
+
+     const {amount, status, dateTime} = val;
+    const {title, quantity, createdby} = val.products[0];
+
+      return{amount, status, dateTime, title, quantity, createdby};
+      }
+      );
+      this.ELEMENT_DATA.push(...order);
+     });
+     this.dataSource = new MatTableDataSource(this.ELEMENT_DATA) ;
+
+     this.dataSource.paginator = this.paginator;
+    
+     this.loading=false;
+     (err) => {this._snackBar.open(err.error.ErrorMessage.message, 'close', {
+       duration: 3000, horizontalPosition: this.horizontalPosition, verticalPosition: this.verticalPosition
+     });};});
+
+
+  }
+  statusValue = [
+    {value: 'complete', viewValue: 'Complete'},
     {value: 'pending', viewValue: 'Pending'},
   ];
   displayedColumns: string[] = ['amount', 'status', 'dateTime', 'title', 'quantity', 'createdby', 'actions'];
@@ -33,51 +63,30 @@ export class TablesComponent implements AfterViewInit,OnInit {
   verticalPosition: MatSnackBarVerticalPosition = 'top';
 
   ELEMENT_DATA: any[] = [];
-  constructor(private api: ApicallingService, private _snackBar: MatSnackBar) {
-    this.api.getorders().subscribe
-    ((res) => {
-      res.forEach((element) => {
-  
-  
-      const order = element.UserId.map((val) => {
-  
-     const {amount, status, dateTime} = val;
-    const {title, quantity, createdby} = val.products[0];
-  
-      return{amount, status, dateTime, title, quantity, createdby};
-      }
-      );
-      this.ELEMENT_DATA.push(...order);
-     });
-     this.dataSource = new MatTableDataSource(this.ELEMENT_DATA) ;
-     this.dataSource.paginator = this.paginator;
-     (err) => {this._snackBar.open(err.error.ErrorMessage.message, 'close', {
-       duration: 3000, horizontalPosition: this.horizontalPosition, verticalPosition: this.verticalPosition
-     })}});
-   
-   
-  }
-viewSeller(){
-    console.warn(this.dataSource.UserId)
-  }
-Delete(){
-  console.warn(this.dataSource.createdby)
-}
-  applyFilter(filterValue: string)
-  {
-    this.dataSource.filter= filterValue;
-  }
 
-dataSource ; 
+dataSource ;
 
 @ViewChild(MatPaginator) paginator!: MatPaginator;
+viewSeller() {
+    console.warn(this.dataSource.UserId);
+  }
+Delete() {
+  console.warn(this.dataSource.createdby);
+}
+  applyFilter(select) {
+   this.dataSource.filter=select;
+   
+    
+  }
 
 ngOnInit(): void {
-  
+  this.dataSource.filterPredicate = (data, filter) => (data.status.trim().toLowercase == filter.toLowercase) ;
+  this.dataSource.paginator = this.paginator;
+
 }
 ngAfterViewInit() {
-  
-   
+  this.dataSource.paginator = this.paginator;
+
 
 
 }
