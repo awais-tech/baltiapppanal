@@ -18,11 +18,14 @@ import { RegisterComponent } from './pages/register/register.component';
 import { AngularToastifyModule, ToastService } from 'angular-toastify';
 import { ApicallingService } from './apicalling.service';
 import { ToastrModule } from 'ngx-toastr';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatTableModule} from '@angular/material/table';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
 import { LoginsroleGuard } from './loginsrole.guard';
+import {MatSelectModule} from '@angular/material/select';
+
 
 
 @NgModule({
@@ -33,11 +36,13 @@ import { LoginsroleGuard } from './loginsrole.guard';
     HttpClientModule,
     ComponentsModule,
     NgbModule,
+    MatFormFieldModule,
     RouterModule,
     AppRoutingModule,
     ReactiveFormsModule,
     AngularToastifyModule,
     MatTableModule,
+    MatSelectModule,
     MatPaginatorModule,
     ToastrModule.forRoot(), 
     MatSnackBarModule ,

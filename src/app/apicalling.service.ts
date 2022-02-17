@@ -10,7 +10,6 @@ export class ApicallingService {
   constructor(public router: Router,private http:HttpClient) {}
   getorders(): Observable<any> {
     return this.http.get("https://baltiapi.herokuapp.com/orders");
-  
   }
   checkLogin(): boolean {
     if (localStorage.getItem("login")) {
