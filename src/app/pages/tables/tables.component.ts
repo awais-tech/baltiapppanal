@@ -33,12 +33,12 @@ export class TablesComponent implements AfterViewInit, OnInit {
       res.forEach((element) => {
 
 
-      const order = element.UserId.map((val) => {
+      const order = element.UserId.map((val: { products?: any; amount?: any; status?: any; dateTime?: any; _id?: any; }) => {
 
-     const {amount, status, dateTime} = val;
+     const {amount, status, dateTime,_id} = val;
     const {title, quantity, createdby} = val.products[0];
 
-      return{amount, status, dateTime, title, quantity, createdby};
+      return{amount, status, dateTime, title, quantity, createdby,_id};
       }
       );
       this.ELEMENT_DATA.push(...order);
@@ -67,11 +67,11 @@ export class TablesComponent implements AfterViewInit, OnInit {
 dataSource ;
 
 @ViewChild(MatPaginator) paginator!: MatPaginator;
-viewSeller() {
-    console.warn(this.dataSource.UserId);
+viewSeller(sId: any) {
+    console.warn(sId);
   }
-Delete() {
-  console.warn(this.dataSource.createdby);
+Delete(dId) {
+  console.warn(dId);
 }
   applyFilter(select) {
    this.dataSource.filter=select;

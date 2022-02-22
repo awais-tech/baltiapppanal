@@ -11,6 +11,9 @@ export class ApicallingService {
   getorders(): Observable<any> {
     return this.http.get("https://baltiapi.herokuapp.com/orders");
   }
+  getAllUsers(): Observable<any> {
+    return this.http.get("https://baltiapi.herokuapp.com/users");
+  }
   checkLogin(): boolean {
     if (localStorage.getItem("login")) {
       return true;
