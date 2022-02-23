@@ -28,6 +28,7 @@ import {MatSelectModule} from '@angular/material/select';
 
 
 
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -53,6 +54,7 @@ import {MatSelectModule} from '@angular/material/select';
     AppComponent,
     AdminLayoutComponent,
     AuthLayoutComponent,
+
   
   ],
   providers: [ApicallingService,ToastService,LoginsroleGuard],

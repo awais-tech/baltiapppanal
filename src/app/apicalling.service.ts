@@ -14,6 +14,13 @@ export class ApicallingService {
   getAllUsers(): Observable<any> {
     return this.http.get("https://baltiapi.herokuapp.com/users");
   }
+  deleteorder(id): Observable<any> {
+    return this.http.delete("https://baltiapi.herokuapp.com/orders/"+id);
+  }
+  Resturent(): Observable<any> {
+    return this.http.get("https://baltiapi.herokuapp.com/Resturent");
+  }
+
   checkLogin(): boolean {
     if (localStorage.getItem("login")) {
       return true;

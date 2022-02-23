@@ -16,6 +16,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { ResturentComponent } from 'src/app/resturent/resturent.component';
 
 // import { ToastrModule } from 'ngx-toastr';
 
@@ -38,6 +39,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     UserProfileComponent,
     TablesComponent,
     IconsComponent,  
+    ResturentComponent
   ]
 })
 

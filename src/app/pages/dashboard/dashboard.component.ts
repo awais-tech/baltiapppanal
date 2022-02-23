@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import Chart from 'chart.js';
+import { ApicallingService } from 'src/app/apicalling.service';
 
 // core components
 import {
@@ -21,7 +22,20 @@ export class DashboardComponent implements OnInit {
   public salesChart;
   public clicked: boolean = true;
   public clicked1: boolean = false;
+  loading=true;
+  totalnumber;
+constructor(private api: ApicallingService){
+  this.loading=true;
+ this.api.getAllUsers().subscribe
+((res) => {
+  setTimeout(()=>{
+  this.totalnumber=res.length;
+  this.loading=false;
+  },200);
 
+})
+
+}
   ngOnInit() {
 
     this.datasets = [

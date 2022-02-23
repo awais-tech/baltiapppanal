@@ -72,6 +72,15 @@ viewSeller(sId: any) {
   }
 Delete(dId) {
   console.warn(dId);
+  this.api.deleteorder(dId).subscribe
+  ((res) => {
+    this.ELEMENT_DATA=this.ELEMENT_DATA.filter((val,index)=>val._id!=dId);
+    this.dataSource = new MatTableDataSource(this.ELEMENT_DATA) ;
+    this.dataSource.paginator = this.paginator;
+    (err) => {this._snackBar.open("Something Goes wrong", 'close', {
+      duration: 3000, horizontalPosition: this.horizontalPosition, verticalPosition: this.verticalPosition
+    });
+  }});
 }
   applyFilter(select) {
    this.dataSource.filter=select;

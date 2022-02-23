@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ViewChild, AfterViewInit, OnInit} from '@angular/core';
 import {  MatColumnDef,
   MatHeaderRowDef,
   MatNoDataRow,
@@ -7,33 +7,33 @@ import {  MatColumnDef,
   MatTableDataSource, } from '@angular/material/table';
 
 import { MatPaginator } from '@angular/material/paginator';
-import { ApicallingService } from '../../apicalling.service';
+import { ApicallingService } from '../apicalling.service';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
-import { element } from 'protractor';
+
 @Component({
-  selector: 'app-icons',
-  templateUrl: './icons.component.html',
-  styleUrls: ['./icons.component.scss']
+  selector: 'app-resturent',
+  templateUrl: './resturent.component.html',
+  styleUrls: ['./resturent.component.css']
 })
-export class IconsComponent implements OnInit {
+export class ResturentComponent implements OnInit {
 
   loading=true;
   constructor(private api: ApicallingService, private _snackBar: MatSnackBar) {
     this.loading=true;
-    this.api.getAllUsers().subscribe
+    this.api.Resturent().subscribe
     ((res) => {
     
 
 
-      const order = res.map((val) => {
-console.log(val);
-     const {email="s", name="s", role="s",Phoneno="s",Address="hello",Uid="s",_id} = val;
+      const resturent = res.map((val) => {
+
+     const {_id="s", Name="s", imageUrl="s",description="s"} = val;
   
 
-      return{name, email, Uid ,Phoneno, role ,Address,_id};
+      return{_id, Name, imageUrl,description};
       }
       );
-      this.ELEMENT_DATA.push(...order);
+      this.ELEMENT_DATA.push(...resturent);
   
      this.dataSource = new MatTableDataSource(this.ELEMENT_DATA) ;
 
@@ -47,7 +47,7 @@ console.log(val);
 
   }
 
-  displayedColumns: string[] = ['Name', 'Email', 'Address', 'Phoneno', 'Role'];
+  displayedColumns: string[] = ['Id', 'Name', 'Image', 'Description'];
   horizontalPosition: MatSnackBarHorizontalPosition = 'right';
   verticalPosition: MatSnackBarVerticalPosition = 'top';
 
