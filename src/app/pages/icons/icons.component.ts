@@ -47,7 +47,7 @@ console.log(val);
 
   }
 
-  displayedColumns: string[] = ['Name', 'Email', 'Address', 'Phoneno', 'Role'];
+  displayedColumns: string[] = ['Name', 'Email', 'Address', 'Phoneno', 'Role', 'actions'];
   horizontalPosition: MatSnackBarHorizontalPosition = 'right';
   verticalPosition: MatSnackBarVerticalPosition = 'top';
 
@@ -56,11 +56,8 @@ console.log(val);
 dataSource ;
 
 @ViewChild(MatPaginator) paginator!: MatPaginator;
-viewSeller(sId: any) {
-    console.warn(sId);
-  }
-Delete(dId) {
-  console.warn(dId);
+ViewId(sId) {
+  console.warn(sId);
 }
 
 

@@ -85,7 +85,16 @@
                   <h5 class="card-title text-uppercase text-muted mb-0">
                     Total Orders
                   </h5>
-                  <span class="h2 font-weight-bold mb-0">49,65%</span>
+                  <mat-spinner
+                  *ngIf="loading; else yes"
+                  class="text-center"
+                  mode="determinate"
+                  value="100"
+                  diameter="20"
+                ></mat-spinner>
+                <span class="h2 font-weight-bold mb-0" #yes>{{
+                  totalorders
+                }}</span>
                 </div>
                 <div class="col-auto">
                   <div

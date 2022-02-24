@@ -24,6 +24,7 @@ export class DashboardComponent implements OnInit {
   public clicked1: boolean = false;
   loading=true;
   totalnumber;
+  totalorders;
 constructor(private api: ApicallingService){
   this.loading=true;
  this.api.getAllUsers().subscribe
@@ -33,6 +34,13 @@ constructor(private api: ApicallingService){
   this.loading=false;
   },200);
 
+})
+this.api.getorders().subscribe
+((res)=>{
+  setTimeout(()=>{
+    this.totalorders=res.length;
+    this.loading=false;
+    },200);
 })
 
 }

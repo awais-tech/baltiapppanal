@@ -60,12 +60,12 @@
                     ><i class="ni ni-email-83"></i
                   ></span>
                 </div>
-                <input
+                <input class="form-control"
                   placeholder="Email"
                   type="email"
                   formControlName="loginemail"
                 />
-                <br />
+                <br>
                 <span
                   style="color: red"
                   *ngIf="loginemail && loginemail.invalid && loginemail.touched"
@@ -80,7 +80,7 @@
                     ><i class="ni ni-lock-circle-open"></i
                   ></span>
                 </div>
-                <input
+                <input class="form-control"
                   placeholder="Password"
                   type="password"
                   formControlName="loginpassword"

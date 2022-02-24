@@ -5,6 +5,7 @@ import {  MatColumnDef,
   MatRowDef,
   MatTable,
   MatTableDataSource, } from '@angular/material/table';
+import { RouterModule, Routes } from '@angular/router';
 
 import { MatPaginator } from '@angular/material/paginator';
 import { ApicallingService } from '../../apicalling.service';
