@@ -10,7 +10,7 @@
         <div class="col-lg-12">
           <div class="card bg-default shadow">
             <div class="card-header bg-transparent border-0">
-              <h3 class="text-white mb-0">ALL USERS</h3>
+              <h3 class="text-white mb-0">ALL Feedbacks</h3>
             </div>
             <div class="table-responsive">
               <table
@@ -18,61 +18,72 @@
                 [dataSource]="dataSource"
                 class="mat-elevation-z8"
               >
-                <ng-container matColumnDef="Name">
-                  <th mat-header-cell *matHeaderCellDef>Name</th>
+                <ng-container matColumnDef="Description">
+                  <th mat-header-cell *matHeaderCellDef>Description</th>
                   <td mat-cell *matCellDef="let element">
-                    {{ element.name }}
+                    {{ element.Description }}
                   </td>
                 </ng-container>
-                <ng-container matColumnDef="Role">
-                  <th mat-header-cell *matHeaderCellDef>Role</th>
-                  <td mat-cell *matCellDef="let element">
-                    {{ element.role }}
-                  </td>
-                </ng-container>
-                <ng-container matColumnDef="Email">
-                  <th mat-header-cell *matHeaderCellDef>Email</th>
+                <ng-container matColumnDef="User Email">
+                  <th mat-header-cell *matHeaderCellDef>User Email</th>
                   <td mat-cell *matCellDef="let element">
                     {{ element.email }}
                   </td>
                 </ng-container>
-                <ng-container matColumnDef="Phoneno">
-                  <th mat-header-cell *matHeaderCellDef>Phoneno</th>
+
+                <ng-container matColumnDef="Rating">
+                  <th mat-header-cell *matHeaderCellDef>Rating</th>
                   <td mat-cell *matCellDef="let element">
-                    {{ element.Phoneno }}
+                    {{ element.Rating }}
                   </td>
                 </ng-container>
-                <ng-container matColumnDef="Address">
-                  <th mat-header-cell *matHeaderCellDef>Address</th>
-                  <td mat-cell *matCellDef="let element">
-                    {{ element.Address }}
-                  </td>
-                </ng-container>
+
                 <ng-container matColumnDef="actions">
                   <th mat-header-cell *matHeaderCellDef>Actions</th>
                   <td mat-cell *matCellDef="let row">
                     <button
                       mat-button
                       class="btn btn-primary my-4"
-                      (click)="ViewId(row.Uid)"
+                      (click)="ViewUser(row.owner)"
                     >
-                      View Restaurent
+                      View Seller
+                    </button>
+                    <button
+                      mat-button
+                      class="btn btn-primary my-4"
+                      (click)="ViewUser(row.owner)"
+                    >
+                      View Product
+                    </button>
+                    <button
+                      mat-button
+                      class="btn btn-primary my-4"
+                      (click)="ViewUser(row.Uid)"
+                    >
+                      View User
+                    </button>
+                    <button
+                      mat-button
+                      class="btn btn-primary my-4"
+                      (click)="ViewUser(row.Uid)"
+                    >
+                      View Order
                     </button>
                   </td>
                 </ng-container>
 
                 <!-- <ng-container matColumnDef="Actions">
-                  <th mat-header-cell *matHeaderCellDef>Actions</th>
-                  <td mat-cell *matCellDef="let row">
-                    <button
-                      mat-button
-                      class="btn btn-primary my-4"
-                      (click)="viewSeller(row.createdby)"
-                    >
-                      View Resturent
-                    </button>
-                  </td>
-                </ng-container> -->
+                    <th mat-header-cell *matHeaderCellDef>Actions</th>
+                    <td mat-cell *matCellDef="let row">
+                      <button
+                        mat-button
+                        class="btn btn-primary my-4"
+                        (click)="viewSeller(row.createdby)"
+                      >
+                        View Resturent
+                      </button>
+                    </td>
+                  </ng-container> -->
                 <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                 <tr
                   mat-row

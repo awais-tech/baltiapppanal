@@ -10,6 +10,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { ApicallingService } from '../../apicalling.service';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import { element } from 'protractor';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-icons',
   templateUrl: './icons.component.html',
@@ -18,7 +19,7 @@ import { element } from 'protractor';
 export class IconsComponent implements OnInit {
 
   loading=true;
-  constructor(private api: ApicallingService, private _snackBar: MatSnackBar) {
+  constructor(private api: ApicallingService, private _snackBar: MatSnackBar,public router:Router) {
     this.loading=true;
     this.api.getAllUsers().subscribe
     ((res) => {
@@ -58,6 +59,7 @@ dataSource ;
 @ViewChild(MatPaginator) paginator!: MatPaginator;
 ViewId(sId) {
   console.warn(sId);
+  this.router.navigate(['Resturent/'+sId])
 }
 
 
