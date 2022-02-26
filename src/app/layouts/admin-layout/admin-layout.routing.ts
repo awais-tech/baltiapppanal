@@ -17,5 +17,6 @@ export const AdminLayoutRoutes: Routes = [
   { path: "Resturent/:id", component: ResturentComponent },
   { path: "Resturent", component: ResturentComponent },
   { path: "manageproducts", component: ProductsComponent },
+  { path: "manageproducts/:id", component: ProductsComponent },
   { path: "Feedback", component: FeedbackComponent },
 ];

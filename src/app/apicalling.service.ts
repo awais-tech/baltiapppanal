@@ -20,11 +20,21 @@ export class ApicallingService {
   Resturent(): Observable<any> {
     return this.http.get("https://baltiapi.herokuapp.com/Resturent");
   }
+  DeleteResturent(id): Observable<any> {
+    return this.http.delete("https://baltiapi.herokuapp.com/Resturent/" + id);
+  }
   ViewProduct(): Observable<any> {
     return this.http.get(" https://baltiapi.herokuapp.com/products");
   }
+  deleteProduct(id): Observable<any> {
+    return this.http.delete("https://baltiapi.herokuapp.com/products/" + id);
+  }
   ViewFeedback(): Observable<any> {
     return this.http.get("https://baltiapi.herokuapp.com/feedback");
+  }
+  ViewIndivisualSeller(id): Observable<any> {
+    // view selected user
+    return this.http.get("https://baltiapi.herokuapp.com/feedback/" + id);
   }
   checkLogin(): boolean {
     if (localStorage.getItem("login")) {

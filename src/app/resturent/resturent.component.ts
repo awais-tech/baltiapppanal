@@ -90,9 +90,26 @@ export class ResturentComponent implements OnInit {
   viewSeller(sId: any) {
     console.log(sId);
   }
+  Delete(dId) {
+    console.warn(dId);
+    this.api.DeleteResturent(dId).subscribe((res) => {
+      this.ELEMENT_DATA = this.ELEMENT_DATA.filter(
+        (val, index) => val._id != dId
+      );
+      this.dataSource = new MatTableDataSource(this.ELEMENT_DATA);
+      this.dataSource.paginator = this.paginator;
+      (err) => {
+        this._snackBar.open("Something Goes wrong", "close", {
+          duration: 3000,
+          horizontalPosition: this.horizontalPosition,
+          verticalPosition: this.verticalPosition,
+        });
+      };
+    });
+  }
 
   viewProducts(Rname) {
-    console.log(Rname);
+    this.router.navigate(["manageproducts/" + Rname]);
   }
 
   ngOnInit(): void {

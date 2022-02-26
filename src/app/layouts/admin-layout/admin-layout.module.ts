@@ -19,6 +19,7 @@ import { MatPaginatorModule } from "@angular/material/paginator";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { ResturentComponent } from "src/app/resturent/resturent.component";
 import { FeedbackComponent } from "src/app/feedback/feedback.component";
+import { ProductsComponent } from "src/app/pages/manageproducts/manageproducts.component";
 
 // import { ToastrModule } from 'ngx-toastr';
 
@@ -43,6 +44,7 @@ import { FeedbackComponent } from "src/app/feedback/feedback.component";
     IconsComponent,
     ResturentComponent,
     FeedbackComponent,
+    ProductsComponent,
   ],
 })
 export class AdminLayoutModule {}
