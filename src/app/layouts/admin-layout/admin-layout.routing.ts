@@ -11,6 +11,7 @@ import { ProductsComponent } from "src/app/pages/manageproducts/manageproducts.c
 export const AdminLayoutRoutes: Routes = [
   { path: "dashboard", component: DashboardComponent },
   { path: "user-profile", component: UserProfileComponent },
+  { path: "user-profile/:id", component: UserProfileComponent },
   { path: "tables", component: TablesComponent },
   { path: "icons", component: IconsComponent },
   { path: "icons/:id", component: IconsComponent },

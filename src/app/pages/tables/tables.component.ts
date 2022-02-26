@@ -5,7 +5,7 @@ import {  MatColumnDef,
   MatRowDef,
   MatTable,
   MatTableDataSource, } from '@angular/material/table';
-import { RouterModule, Routes } from '@angular/router';
+import { Router } from '@angular/router';
 
 import { MatPaginator } from '@angular/material/paginator';
 import { ApicallingService } from '../../apicalling.service';
@@ -27,7 +27,8 @@ import { element } from 'protractor';
 })
 export class TablesComponent implements AfterViewInit, OnInit {
   loading=true;
-  constructor(private api: ApicallingService, private _snackBar: MatSnackBar) {
+  constructor(private api: ApicallingService, private _snackBar: MatSnackBar, public router:Router,
+    ) {
     this.loading=true;
     this.api.getorders().subscribe
     ((res) => {
@@ -70,6 +71,7 @@ dataSource ;
 @ViewChild(MatPaginator) paginator!: MatPaginator;
 viewSeller(sId: any) {
     console.warn(sId);
+    this.router.navigate(['user-profile/'+sId])
   }
 Delete(dId) {
   console.warn(dId);

@@ -1,4 +1,17 @@
-import { Component, ViewChild, AfterViewInit, OnInit } from "@angular/core";
+import {
+  Component,
+  ViewChild,
+  AfterViewInit,
+  OnInit,
+  ElementRef,
+} from "@angular/core";
+import { MatPaginator } from "@angular/material/paginator";
+import { ApicallingService } from "../apicalling.service";
+import {
+  MatSnackBar,
+  MatSnackBarHorizontalPosition,
+  MatSnackBarVerticalPosition,
+} from "@angular/material/snack-bar";
 import {
   MatColumnDef,
   MatHeaderRowDef,
@@ -7,25 +20,19 @@ import {
   MatTable,
   MatTableDataSource,
 } from "@angular/material/table";
-
-import { MatPaginator } from "@angular/material/paginator";
-import { ApicallingService } from "../apicalling.service";
-import {
-  MatSnackBar,
-  MatSnackBarHorizontalPosition,
-  MatSnackBarVerticalPosition,
-} from "@angular/material/snack-bar";
-import { ActivatedRoute, Router } from "@angular/router";
+import { Router } from '@angular/router';
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: "app-resturent",
   templateUrl: "./resturent.component.html",
   styleUrls: ["./resturent.component.css"],
 })
-export class ResturentComponent implements OnInit {
+export class ResturentComponent implements AfterViewInit, OnInit {
   loading = true;
   id = "";
   resturent = [];
+  users =[];
   displayedColumns: string[] = [
     "Id",
     "Name",
@@ -49,6 +56,10 @@ export class ResturentComponent implements OnInit {
     this.route.paramMap.subscribe((params: any) => {
       this.id = params?.get("id") || "";
       console.log(this.id);
+
+      this.api.getAllUsers.subscribe((res) => {
+        this.users = res.map((res: { createdby: any }) => res.createdby);
+        
       this.api.Resturent().subscribe((res) => {
         this.resturent = res.map((val) => {
           const {
@@ -63,7 +74,7 @@ export class ResturentComponent implements OnInit {
         });
         if (this.id != "") {
           this.resturent = this.resturent.filter((val, index) => {
-            return val.createdby == this.id;
+            return val.Uid == this.id;
           });
           this.ELEMENT_DATA.push(...this.resturent);
         } else {
@@ -87,8 +98,14 @@ export class ResturentComponent implements OnInit {
   }
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild("check") selection: any;
   viewSeller(sId: any) {
     console.log(sId);
+    this.router.navigate(['user-profile/'+sId])
+
+  }
+  applyFilter(select) {
+    this.dataSource.filter = select;
   }
   Delete(dId) {
     console.warn(dId);
@@ -113,9 +130,21 @@ export class ResturentComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.dataSource.paginator = this.paginator;
+      this.dataSource.filterPredicate = (
+        data: {
+          status: { trim: () => { (): any; new (): any; toLowercase: any } };
+        },
+        filter: { toLowercase: any }
+      ) => data.status.trim().toLowercase == filter.toLowercase
+    this.dataSource.paginator = this.paginator
   }
   ngAfterViewInit() {
+    if (this.id) {
+      console.log(this.selection);
+      console.log(this.selection.nativeElement);
+      this.selection.nativeElement.innerHTML = this.id;
+    }
     this.dataSource.paginator = this.paginator;
   }
+}
 }

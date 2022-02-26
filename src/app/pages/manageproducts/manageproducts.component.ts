@@ -20,6 +20,7 @@ import {
   MatTable,
   MatTableDataSource,
 } from "@angular/material/table";
+import { Router } from '@angular/router';
 import { ActivatedRoute } from "@angular/router";
 
 @Component({
@@ -51,6 +52,7 @@ export class ProductsComponent implements AfterViewInit, OnInit {
   constructor(
     private api: ApicallingService,
     private _snackBar: MatSnackBar,
+    public router:Router,
     private route: ActivatedRoute
   ) {
     this.loading = true;
@@ -112,6 +114,7 @@ export class ProductsComponent implements AfterViewInit, OnInit {
 
   ViewId(sId) {
     console.warn(sId);
+    this.router.navigate(['user-profile/'+sId])
   }
 
   applyFilter(select) {

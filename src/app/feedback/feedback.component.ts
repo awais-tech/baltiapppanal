@@ -81,6 +81,10 @@ export class FeedbackComponent implements OnInit {
   ViewUser(sId) {
     this.router.navigate(["icons/" + sId]);
   }
+  ViewSeller(sId) {
+    this.router.navigate(['user-profile/'+sId])
+  }
+
 
   ngOnInit(): void {
     this.dataSource.paginator = this.paginator;
