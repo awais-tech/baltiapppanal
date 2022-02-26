@@ -33,7 +33,8 @@ export class ApicallingService {
     return this.http.get("https://baltiapi.herokuapp.com/feedback");
   }
   ViewIndivisualSeller(id): Observable<any> {
-    // view selected user
+    // view selected user use _id if we fetch from seller
+    // created id if we select from other api
     return this.http.get("https://baltiapi.herokuapp.com/feedback/" + id);
   }
   checkLogin(): boolean {
