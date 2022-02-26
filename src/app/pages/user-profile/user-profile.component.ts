@@ -53,7 +53,7 @@ export class UserProfileComponent{
         } else {
           this.ELEMENT_DATA.push(...this.seller);
         }
-
+this.dataSource=this.seller;
         this.loading = false;
         (err) => {
           this._snackBar.open(err.error.ErrorMessage.message, "close", {

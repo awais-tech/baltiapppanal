@@ -57,9 +57,9 @@ export class ResturentComponent implements AfterViewInit, OnInit {
       this.id = params?.get("id") || "";
       console.log(this.id);
 
-      this.api.getAllUsers.subscribe((res) => {
-        this.users = res.map((res: { createdby: any }) => res.createdby);
-        
+      this.api.getAllUsers().subscribe((res) => {
+        this.users = res.map((res: { Uid: any }) => res.Uid);
+
       this.api.Resturent().subscribe((res) => {
         this.resturent = res.map((val) => {
           const {
@@ -74,7 +74,7 @@ export class ResturentComponent implements AfterViewInit, OnInit {
         });
         if (this.id != "") {
           this.resturent = this.resturent.filter((val, index) => {
-            return val.Uid == this.id;
+            return val.createdby == this.id;
           });
           this.ELEMENT_DATA.push(...this.resturent);
         } else {
@@ -95,7 +95,8 @@ export class ResturentComponent implements AfterViewInit, OnInit {
         };
       });
     });
-  }
+  });
+}
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild("check") selection: any;
@@ -146,5 +147,4 @@ export class ResturentComponent implements AfterViewInit, OnInit {
     }
     this.dataSource.paginator = this.paginator;
   }
-}
 }
