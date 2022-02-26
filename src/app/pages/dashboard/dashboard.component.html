@@ -43,8 +43,16 @@
                   <h5 class="card-title text-uppercase text-muted mb-0">
                     Total Products
                   </h5>
-                  <span class="h2 font-weight-bold mb-0">2,356</span>
-                </div>
+                  <mat-spinner
+                    *ngIf="loading; else yes"
+                    class="text-center"
+                    mode="determinate"
+                    value="100"
+                    diameter="20"
+                  ></mat-spinner>
+                  <span class="h2 font-weight-bold mb-0" #yes>{{
+                    totalproducts
+                  }}</span>                </div>
                 <div class="col-auto">
                   <div
                     class="icon icon-shape bg-warning text-white rounded-circle shadow"
@@ -64,8 +72,16 @@
                   <h5 class="card-title text-uppercase text-muted mb-0">
                     Total Resturent
                   </h5>
-                  <span class="h2 font-weight-bold mb-0">924</span>
-                </div>
+                  <mat-spinner
+                  *ngIf="loading; else yes"
+                  class="text-center"
+                  mode="determinate"
+                  value="100"
+                  diameter="20"
+                ></mat-spinner>
+                <span class="h2 font-weight-bold mb-0" #yes>{{
+                 totalres
+                }}</span>                  </div>
                 <div class="col-auto">
                   <div
                     class="icon icon-shape bg-yellow text-white rounded-circle shadow"

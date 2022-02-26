@@ -6,6 +6,7 @@ import { UserProfileComponent } from "../../pages/user-profile/user-profile.comp
 import { TablesComponent } from "../../pages/tables/tables.component";
 import { ResturentComponent } from "src/app/resturent/resturent.component";
 import { FeedbackComponent } from "src/app/feedback/feedback.component";
+import { ProductsComponent } from "src/app/pages/manageproducts/manageproducts.component";
 
 export const AdminLayoutRoutes: Routes = [
   { path: "dashboard", component: DashboardComponent },
@@ -15,5 +16,6 @@ export const AdminLayoutRoutes: Routes = [
   { path: "icons/:id", component: IconsComponent },
   { path: "Resturent/:id", component: ResturentComponent },
   { path: "Resturent", component: ResturentComponent },
+  { path: "manageproducts", component: ProductsComponent },
   { path: "Feedback", component: FeedbackComponent },
 ];
