@@ -89,7 +89,7 @@ export class ProductsComponent implements AfterViewInit, OnInit {
           if (this.id != "") {
             this.products = this.products.filter((val, index) => {
               console.log(val._id);
-              return val._id == this.id;
+              return val.ResturentName == this.id || val._id == this.id;
             });
 
             this.ELEMENT_DATA.push(...this.products);
