@@ -63,7 +63,7 @@
                   <span class="description">Total Orders Done</span>
                 </div>
                 <div>
-                  <span class="heading"></span>
+                  <span class="heading">{{seller[0].rating}}</span>
                   <span class="description">Average Rating</span>
                 </div>
                 <div>
@@ -74,18 +74,17 @@
             </div>
           </div>
           <div class="text-center">
-            <h3>Mister KFC<span class="font-weight-light">, 27</span></h3>
+            <h3>{{seller[0].owner}}</h3>
             <div class="h5 font-weight-300">
               <i class="ni location_pin mr-2"></i>Johar town, Lahore
             </div>
             <div class="h5 mt-4">
-              <i class="ni business_briefcase-24 mr-2"></i>Marketing Manager
+              <i class="ni business_briefcase-24 mr-2"></i>{{seller[0].email}}
             </div>
             <div><i class="ni education_hat mr-2"></i>McDonalds Johar town</div>
             <hr class="my-4" />
             <p>
-              Ryan — the name taken by Melbourne-raised, Brooklyn-based Nick
-              Murphy — writes, performs and records all of his own music.
+              {{seller[0].description}}
             </p>
           </div>
         </div>

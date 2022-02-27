@@ -35,7 +35,7 @@ export class ApicallingService {
   ViewIndivisualSeller(id): Observable<any> {
     // view selected user use _id if we fetch from seller
     // created id if we select from other api
-    return this.http.get("https://baltiapi.herokuapp.com/feedback/" + id);
+    return this.http.get("https://baltiapi.herokuapp.com/users/" + id);
   }
   checkLogin(): boolean {
     if (localStorage.getItem("login")) {

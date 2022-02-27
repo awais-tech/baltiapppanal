@@ -47,13 +47,13 @@ export class UserProfileComponent{
         });
         if (this.id != "") {
           this.seller = this.seller.filter((val, index) => {
-            return val.createdby == this.id;
+            return val.Uid == this.id;
           });
           this.ELEMENT_DATA.push(...this.seller);
         } else {
           this.ELEMENT_DATA.push(...this.seller);
         }
-this.dataSource=this.seller;
+        console.log(this.seller)
         this.loading = false;
         (err) => {
           this._snackBar.open(err.error.ErrorMessage.message, "close", {
