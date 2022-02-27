@@ -20,7 +20,7 @@ import {
   MatTable,
   MatTableDataSource,
 } from "@angular/material/table";
-import { Router } from '@angular/router';
+import { Router } from "@angular/router";
 import { ActivatedRoute } from "@angular/router";
 
 @Component({
@@ -32,7 +32,7 @@ export class ResturentComponent implements AfterViewInit, OnInit {
   loading = true;
   id = "";
   resturent = [];
-  users =[];
+  users = [];
   displayedColumns: string[] = [
     "Id",
     "Name",
@@ -58,52 +58,51 @@ export class ResturentComponent implements AfterViewInit, OnInit {
       console.log(this.id);
 
       this.api.getAllUsers().subscribe((res) => {
-        this.users = res.map((res: { Uid: any }) => res.Uid);
+        this.users = res.map((res) => ({ values: res.Uid, label: res.name }));
 
-      this.api.Resturent().subscribe((res) => {
-        this.resturent = res.map((val) => {
-          const {
-            _id = "s",
-            Name = "s",
-            imageUrl = "s",
-            description = "s",
-            createdby,
-          } = val;
+        this.api.Resturent().subscribe((res) => {
+          this.resturent = res.map((val) => {
+            const {
+              _id = "s",
+              Name = "s",
+              imageUrl = "s",
+              description = "s",
+              createdby,
+            } = val;
 
-          return { _id, Name, imageUrl, description, createdby };
+            return { _id, Name, imageUrl, description, createdby };
+          });
+          if (this.id != "") {
+            this.resturent = this.resturent.filter((val, index) => {
+              return val.createdby == this.id;
+            });
+            this.ELEMENT_DATA.push(...this.resturent);
+          } else {
+            this.ELEMENT_DATA.push(...this.resturent);
+          }
+
+          this.dataSource = new MatTableDataSource(this.ELEMENT_DATA);
+
+          this.dataSource.paginator = this.paginator;
+
+          this.loading = false;
+          (err) => {
+            this._snackBar.open(err.error.ErrorMessage.message, "close", {
+              duration: 3000,
+              horizontalPosition: this.horizontalPosition,
+              verticalPosition: this.verticalPosition,
+            });
+          };
         });
-        if (this.id != "") {
-          this.resturent = this.resturent.filter((val, index) => {
-            return val.createdby == this.id;
-          });
-          this.ELEMENT_DATA.push(...this.resturent);
-        } else {
-          this.ELEMENT_DATA.push(...this.resturent);
-        }
-
-        this.dataSource = new MatTableDataSource(this.ELEMENT_DATA);
-
-        this.dataSource.paginator = this.paginator;
-
-        this.loading = false;
-        (err) => {
-          this._snackBar.open(err.error.ErrorMessage.message, "close", {
-            duration: 3000,
-            horizontalPosition: this.horizontalPosition,
-            verticalPosition: this.verticalPosition,
-          });
-        };
       });
     });
-  });
-}
+  }
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild("check") selection: any;
   viewSeller(sId: any) {
     console.log(sId);
-    this.router.navigate(['user-profile/'+sId])
-
+    this.router.navigate(["user-profile/" + sId]);
   }
   applyFilter(select) {
     this.dataSource.filter = select;
@@ -131,13 +130,13 @@ export class ResturentComponent implements AfterViewInit, OnInit {
   }
 
   ngOnInit(): void {
-      this.dataSource.filterPredicate = (
-        data: {
-          status: { trim: () => { (): any; new (): any; toLowercase: any } };
-        },
-        filter: { toLowercase: any }
-      ) => data.status.trim().toLowercase == filter.toLowercase
-    this.dataSource.paginator = this.paginator
+    this.dataSource.filterPredicate = (
+      data: {
+        createdby: { trim: () => { (): any; new (): any; toLowercase: any } };
+      },
+      filter: { toLowercase: any }
+    ) => data.createdby.trim().toLowercase == filter.toLowercase;
+    this.dataSource.paginator = this.paginator;
   }
   ngAfterViewInit() {
     if (this.id) {

@@ -13,6 +13,7 @@ export const AdminLayoutRoutes: Routes = [
   { path: "user-profile", component: UserProfileComponent },
   { path: "user-profile/:id", component: UserProfileComponent },
   { path: "tables", component: TablesComponent },
+  { path: "tables/:id", component: TablesComponent },
   { path: "icons", component: IconsComponent },
   { path: "icons/:id", component: IconsComponent },
   { path: "Resturent/:id", component: ResturentComponent },

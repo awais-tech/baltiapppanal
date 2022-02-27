@@ -32,6 +32,9 @@ export class ApicallingService {
   ViewFeedback(): Observable<any> {
     return this.http.get("https://baltiapi.herokuapp.com/feedback");
   }
+  DeleteFeedback(id): Observable<any> {
+    return this.http.delete("https://baltiapi.herokuapp.com/feedback/" + id);
+  }
   ViewIndivisualSeller(id): Observable<any> {
     // view selected user use _id if we fetch from seller
     // created id if we select from other api

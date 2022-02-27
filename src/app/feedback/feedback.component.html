@@ -44,30 +44,37 @@
                     <button
                       mat-button
                       class="btn btn-primary my-4"
-                      (click)="ViewSeller(row._id)"
+                      (click)="ViewSeller(row.owner)"
                     >
                       View Seller
                     </button>
                     <button
                       mat-button
                       class="btn btn-primary my-4"
-                      (click)="ViewUser(row.owner)"
+                      (click)="ViewProduct(row.proid)"
                     >
                       View Product
                     </button>
                     <button
                       mat-button
                       class="btn btn-primary my-4"
-                      (click)="ViewUser(row.Uid)"
+                      (click)="ViewUser(row.UID)"
                     >
                       View User
                     </button>
                     <button
                       mat-button
                       class="btn btn-primary my-4"
-                      (click)="ViewUser(row.Uid)"
+                      (click)="ViewOrder(row.OID)"
                     >
                       View Order
+                    </button>
+                    <button
+                      mat-button
+                      class="btn btn-primary my-4"
+                      (click)="Delete(row._id)"
+                    >
+                      Delete
                     </button>
                   </td>
                 </ng-container>

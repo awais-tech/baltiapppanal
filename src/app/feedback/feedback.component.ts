@@ -54,7 +54,9 @@ export class FeedbackComponent implements OnInit {
       this.dataSource.paginator = this.paginator;
 
       this.loading = false;
+
       (err) => {
+        this.loading = false;
         this._snackBar.open(err.error.ErrorMessage.message, "close", {
           duration: 3000,
           horizontalPosition: this.horizontalPosition,
@@ -62,6 +64,7 @@ export class FeedbackComponent implements OnInit {
         });
       };
     });
+    this.loading = false;
   }
 
   displayedColumns: string[] = [
@@ -81,10 +84,31 @@ export class FeedbackComponent implements OnInit {
   ViewUser(sId) {
     this.router.navigate(["icons/" + sId]);
   }
-  ViewSeller(sId) {
-    this.router.navigate(['user-profile/'+sId])
+  ViewOrder(sId) {
+    this.router.navigate(["tables/" + sId]);
   }
-
+  ViewProduct(sId) {
+    this.router.navigate(["manageproducts/" + sId]);
+  }
+  ViewSeller(sId) {
+    this.router.navigate(["user-profile/" + sId]);
+  }
+  Delete(sId) {
+    this.api.DeleteFeedback(sId).subscribe((res) => {
+      this.ELEMENT_DATA = this.ELEMENT_DATA.filter(
+        (val, index) => val._id != sId
+      );
+      this.dataSource = new MatTableDataSource(this.ELEMENT_DATA);
+      this.dataSource.paginator = this.paginator;
+      (err) => {
+        this._snackBar.open("Something Goes wrong", "close", {
+          duration: 3000,
+          horizontalPosition: this.horizontalPosition,
+          verticalPosition: this.verticalPosition,
+        });
+      };
+    });
+  }
 
   ngOnInit(): void {
     this.dataSource.paginator = this.paginator;

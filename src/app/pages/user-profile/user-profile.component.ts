@@ -1,4 +1,4 @@
-import { Component} from "@angular/core";
+import { Component } from "@angular/core";
 import { ApicallingService } from "../../apicalling.service";
 import {
   MatSnackBar,
@@ -7,16 +7,16 @@ import {
 } from "@angular/material/snack-bar";
 import { ActivatedRoute, Router } from "@angular/router";
 @Component({
-  selector: 'app-user-profile',
-  templateUrl: './user-profile.component.html',
-  styleUrls: ['./user-profile.component.scss']
+  selector: "app-user-profile",
+  templateUrl: "./user-profile.component.html",
+  styleUrls: ["./user-profile.component.scss"],
 })
-export class UserProfileComponent{
-
+export class UserProfileComponent {
   loading = true;
   id = "";
-  seller = [];
-
+  seller: any = {};
+  collect = "";
+  total = 0;
   horizontalPosition: MatSnackBarHorizontalPosition = "right";
   verticalPosition: MatSnackBarVerticalPosition = "top";
 
@@ -32,37 +32,27 @@ export class UserProfileComponent{
     this.loading = true;
     this.route.paramMap.subscribe((params: any) => {
       this.id = params?.get("id") || "";
-      console.log(this.id);
-      this.api.ViewIndivisualSeller("id").subscribe((res) => {
-        this.seller = res.map((val) => {
-          const {
-            _id = "s",
-            rating = "s",
-            owner = "s",
-            description = "s",
-            email,
-          } = val;
 
-          return { _id, rating, owner, description, email };
+      // id mistake
+      this.api.ViewIndivisualSeller(this.id).subscribe((res) => {
+        this.seller = res;
+        this.api.ViewProduct().subscribe((res) => {
+          this.collect = res.filter((pro) => {
+            return pro.createdby == this.id;
+          });
+
+          this.total = this.collect.length;
+          this.loading = false;
         });
-        if (this.id != "") {
-          this.seller = this.seller.filter((val, index) => {
-            return val.Uid == this.id;
-          });
-          this.ELEMENT_DATA.push(...this.seller);
-        } else {
-          this.ELEMENT_DATA.push(...this.seller);
-        }
-        console.log(this.seller)
-        this.loading = false;
-        (err) => {
-          this._snackBar.open(err.error.ErrorMessage.message, "close", {
-            duration: 3000,
-            horizontalPosition: this.horizontalPosition,
-            verticalPosition: this.verticalPosition,
-          });
-        };
       });
+
+      (err) => {
+        this._snackBar.open(err.error.ErrorMessage.message, "close", {
+          duration: 3000,
+          horizontalPosition: this.horizontalPosition,
+          verticalPosition: this.verticalPosition,
+        });
+      };
     });
   }
 }

@@ -24,12 +24,6 @@ export const ROUTES: RouteInfo[] = [
   },
 
   {
-    path: "/user-profile",
-    title: "Seller Detail",
-    icon: "ni-single-02 text-yellow",
-    class: "",
-  },
-  {
     path: "/tables",
     title: "Orders ",
     icon: "ni-bullet-list-67 text-red",

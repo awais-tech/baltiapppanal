@@ -6,8 +6,8 @@
   <mat-form-field appearance="fill">
     <mat-label #check>Filter By User</mat-label>
     <mat-select (selectionChange)="applyFilter(select.value)" #select>
-      <mat-option *ngFor="let sv of users" [value]="sv">
-        {{ sv }}
+      <mat-option *ngFor="let sv of users" [value]="sv.values">
+        {{ sv.label }}
       </mat-option>
     </mat-select>
   </mat-form-field>
