@@ -13,8 +13,8 @@
   <div class="container-fluid d-flex align-items-center justify-content-center">
     <div class="row">
       <div class="col-lg-7 col-md-10">
-        <h1 class="display-2 text-white">Hello {{ seller.name }}</h1>
-        <p class="text-white mt-0 mb-5">Email {{ seller.email }}</p>
+        <h1 class="display-2 text-white">Seller Name: {{ seller.name }}</h1>
+        <h1 class="text-white mt-0 mb-5">Email: {{ seller.email }}</h1>
       </div>
     </div>
   </div>
@@ -24,13 +24,13 @@
 >
   <div class="row d-flex">
     <div class="col-12">
-      <div class="card card-profile shadow">
+      <div class="card card-profile shadow" style="width: 38rem;">
         <div class="row justify-content-center">
           <div class="col-lg-3 order-lg-2">
             <div class="card-profile-image">
               <a href="javascript:void(0)">
                 <img
-                  src="assets/img/theme/team-4-800x800.jpg"
+                  src="assets/img/theme/Admin Avatar.png"
                   class="rounded-circle"
                 />
               </a>
@@ -53,19 +53,21 @@
             </div>
           </div>
         </div>
+        <hr class="my-4" />
         <div class="text-center">
-          <h3>Phoneno</h3>
+          <h3>Phone Number</h3>
           <div class="h5 font-weight-300">
             <i class="ni location_pin mr-2"></i>{{ seller.Phoneno }}
           </div>
+          <hr class="my-4" />
           <div class="h5 mt-4">
-            <i class="ni business_briefcase-24 mr-2"></i>Unique Id
+            <h3>Unique ID</h3>
           </div>
           <div><i class="ni education_hat mr-2"></i>{{ seller.Uid }}</div>
           <hr class="my-4" />
         </div>
         <div class="h5 mt-4">
-          <i class="ni business_briefcase-24 mr-2"></i>Address
+          <h3>Address</h3>
         </div>
         <div>
           <i class="ni education_hat mr-2"></i

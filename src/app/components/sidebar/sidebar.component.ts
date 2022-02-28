@@ -19,20 +19,20 @@ export const ROUTES: RouteInfo[] = [
   {
     path: "/icons",
     title: "Registered Users",
-    icon: "ni-planet text-blue",
+    icon: "ni-single-02 text-blue",
     class: "",
   },
 
   {
     path: "/tables",
     title: "Orders ",
-    icon: "ni-bullet-list-67 text-red",
+    icon: "ni-cart text-red",
     class: "",
   },
   {
     path: "/Resturent",
-    title: "Resturents",
-    icon: "ni-key-25 text-info",
+    title: "Restaurants",
+    icon: "ni-shop text-info",
     class: "",
   },
   {
@@ -44,7 +44,7 @@ export const ROUTES: RouteInfo[] = [
   {
     path: "/Feedback",
     title: "Feedback",
-    icon: "ni-key-25 text-info",
+    icon: "ni-satisfied text-info",
     class: "",
   },
   {
